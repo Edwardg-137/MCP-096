@@ -6,7 +6,7 @@ Aplicación web para un bufete jurídico. Permite abrir expedientes con datos fi
 
 ## Funcionamiento actual
 
-Al arrancar `bufete` se abre el registro de expedientes. La persona puede crear un expediente, buscarlo, anotar actividades, cerrarlo y reabrirlo cuando llega información nueva.
+Al arrancar `bufete` se abre el registro de expedientes. La persona puede crear un expediente, buscarlo, anotar actividades, cerrarlo y reabrirlo cuando llega información nueva. También puede verlos en un calendario del mes en curso.
 
 Los datos quedan en `localStorage` del mismo navegador, con la clave `bufete.expedientes`. Siguen disponibles al recargar o al volver a abrir la aplicación.
 
@@ -24,6 +24,7 @@ Los datos quedan en `localStorage` del mismo navegador, con la clave `bufete.exp
 - Paso de Abierto a En seguimiento, y cierre desde En seguimiento si hay al menos una actividad y un motivo.
 - Reapertura de Cerrado a En seguimiento con motivo. Se conservan actividades y cierres anteriores.
 - El expediente cerrado no admite nuevas actividades.
+- Calendario real del mes en curso. Cada expediente lleva la etiqueta de su estado y se coloca en la fecha de ese estado. Se filtra por etiqueta y por fecha.
 - Confirmaciones y errores del recorrido.
 - Conservación en el navegador.
 
@@ -42,7 +43,7 @@ El navegador carga `index.html` y monta `PaginaExpedientes`. Esa página lee la 
 - `react` y `react-dom`
 - `vite` y `@vitejs/plugin-react`, solo para desarrollo y compilación
 
-No hay enrutador, biblioteca de componentes ni cliente de API. Los iconos y la animación están en el propio proyecto.
+No hay enrutador, biblioteca de componentes ni cliente de API. Los iconos y las animaciones están en el propio proyecto.
 
 ## Limitaciones conocidas
 

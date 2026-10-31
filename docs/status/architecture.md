@@ -17,6 +17,8 @@ La página conserva la lista de expedientes en el estado de React. Al montar la 
 
 La búsqueda y el filtro no cambian lo guardado: solo reducen lo que se ve.
 
+El calendario lee la misma lista. Calcula la fecha de cada estado en el dominio y no escribe el almacenamiento. Elegir un expediente vuelve al detalle.
+
 ## Comunicación entre módulos
 
 `App` monta la página. La página es la única que llama al servicio. Los componentes reciben datos y devuelven acciones. `domain` no importa React. `services` no decide transiciones.

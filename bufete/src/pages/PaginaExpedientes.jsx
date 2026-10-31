@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { CalendarioExpedientes } from '../components/calendario/CalendarioExpedientes.jsx'
 import { FormularioApertura } from '../components/expedientes/FormularioApertura.jsx'
 import { DetalleExpediente } from '../components/expedientes/DetalleExpediente.jsx'
 import { ListaExpedientes } from '../components/expedientes/ListaExpedientes.jsx'
@@ -24,6 +25,7 @@ export function PaginaExpedientes() {
   const [seleccionadoId, setSeleccionadoId] = useState(null)
   const [ultimaEntradaId, setUltimaEntradaId] = useState(null)
   const [zona, setZona] = useState('lista')
+  const [vista, setVista] = useState('registro')
   const [filtroTexto, setFiltroTexto] = useState('')
   const [filtroEstado, setFiltroEstado] = useState('Todos')
   const [aviso, setAviso] = useState(null)
@@ -97,6 +99,14 @@ export function PaginaExpedientes() {
     setAviso(null)
   }
 
+  function abrirDesdeCalendario(id) {
+    setSeleccionadoId(id)
+    setUltimaEntradaId(null)
+    setVista('registro')
+    setZona('panel')
+    setAviso(null)
+  }
+
   function nuevo() {
     setSeleccionadoId(null)
     setUltimaEntradaId(null)
@@ -108,8 +118,30 @@ export function PaginaExpedientes() {
     <main className="pagina">
       <header className="encabezado">
         <h1>Bufete</h1>
-        <p>Expedientes</p>
+        <p>{vista === 'calendario' ? 'Calendario' : 'Expedientes'}</p>
       </header>
+      {listo && (
+        <nav className="vistas" aria-label="Vistas">
+          <button
+            className={vista === 'registro' ? 'vista vista-activa' : 'vista'}
+            type="button"
+            aria-current={vista === 'registro' ? 'page' : undefined}
+            onClick={() => setVista('registro')}
+          >
+            <Icono nombre="expediente" />
+            Expedientes
+          </button>
+          <button
+            className={vista === 'calendario' ? 'vista vista-activa' : 'vista'}
+            type="button"
+            aria-current={vista === 'calendario' ? 'page' : undefined}
+            onClick={() => setVista('calendario')}
+          >
+            <Icono nombre="calendario" />
+            Calendario
+          </button>
+        </nav>
+      )}
 
       {!listo ? (
         <p className="cargando">Cargando expedientes…</p>
@@ -120,6 +152,10 @@ export function PaginaExpedientes() {
             <Aviso tipo={aviso?.tipo} texto={aviso?.texto} />
           </div>
 
+          {vista === 'calendario' ? (
+            <CalendarioExpedientes expedientes={ordenados} onElegir={abrirDesdeCalendario} />
+          ) : (
+            <>
           <div className="barra">
             <label className="campo campo-buscar">
               <span className="etiqueta-buscar">
@@ -188,6 +224,8 @@ export function PaginaExpedientes() {
               </div>
             </section>
           </div>
+            </>
+          )}
         </>
       )}
     </main>

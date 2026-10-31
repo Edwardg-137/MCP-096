@@ -33,6 +33,13 @@ export function Icono({ nombre }) {
         </>
       )}
       {nombre === 'volver' && <path d="M15 5 8 12l7 7" />}
+      {nombre === 'siguiente' && <path d="m9 5 7 7-7 7" />}
+      {nombre === 'calendario' && (
+        <>
+          <rect x="4" y="5" width="16" height="15" rx="2" />
+          <path d="M8 3.5v3M16 3.5v3M4 10h16" />
+        </>
+      )}
       {nombre === 'alerta' && (
         <>
           <path d="M12 4 3.5 19h17z" />

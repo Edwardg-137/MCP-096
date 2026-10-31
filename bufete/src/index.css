@@ -546,6 +546,391 @@ input::placeholder {
   }
 }
 
+.vistas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.vista {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  background: var(--superficie);
+  color: var(--tinta);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.vista-activa {
+  border-color: transparent;
+  background: var(--verde);
+}
+
+.calendario {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.calendario-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem 1rem;
+}
+
+.calendario-nav {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.etiquetas {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.etiquetas legend {
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.etiqueta-grupo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.etiqueta {
+  min-height: 2.25rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  background: var(--superficie);
+  color: var(--tinta);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.etiqueta-activa.abierto {
+  border-color: transparent;
+  background: var(--verde-suave);
+}
+
+.etiqueta-activa.seguimiento {
+  border-color: transparent;
+  background: var(--azul-suave);
+}
+
+.etiqueta-activa.cerrado {
+  border-color: transparent;
+  background: var(--cerrado-fondo);
+  color: var(--cerrado-tinta);
+}
+
+.campo-fecha {
+  flex: 0 1 12rem;
+}
+
+.calendario-nav h2 {
+  margin: 0;
+  justify-self: center;
+  font-size: 1.75rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.nav-lado {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-lado-fin {
+  justify-content: flex-end;
+}
+
+.paso {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.5rem;
+  padding: 0.35rem 0.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--tinta);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.libro {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.rejilla-nombres,
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.rejilla-nombres span {
+  color: var(--tinta-suave);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.rejilla-marco {
+  position: relative;
+  perspective: 1800px;
+  transform-style: preserve-3d;
+}
+
+.calendario .boton {
+  width: auto;
+}
+
+.dia,
+.dia-vacio {
+  min-height: 5.75rem;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+}
+
+.dia-vacio {
+  background: var(--fondo);
+}
+
+.dia {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.35rem;
+  background: var(--superficie);
+  color: var(--tinta);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dia:hover {
+  background: var(--azul-suave);
+}
+
+.dia-elegido {
+  background: var(--verde-suave);
+  border-color: var(--verde);
+}
+
+.dia-numero {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.dia-hoy .dia-numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: var(--azul);
+  color: var(--tinta);
+}
+
+.dia-citas {
+  display: grid;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dia-cita,
+.dia-resto {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dia-cita {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.05rem 0.25rem;
+  border-radius: 4px;
+}
+
+.dia-cita.abierto {
+  background: var(--verde-suave);
+}
+
+.dia-cita.seguimiento {
+  background: var(--azul-suave);
+}
+
+.dia-cita.cerrado {
+  background: var(--cerrado-fondo);
+  color: var(--cerrado-tinta);
+}
+
+.dia-alias {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dia-marca {
+  display: none;
+  font-weight: 600;
+}
+
+.dia-resto {
+  color: var(--tinta-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.hoja-vuelta {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--superficie);
+  pointer-events: none;
+  backface-visibility: hidden;
+  box-shadow: 12px 16px 28px rgba(30, 58, 58, 0.16);
+}
+
+.hoja-vuelta.adelante {
+  transform-origin: left center;
+}
+
+.hoja-vuelta.atras {
+  transform-origin: right center;
+}
+
+.hoja-vuelta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(30, 58, 58, 0.14), transparent 32%);
+}
+
+.hoja-vuelta.atras::after {
+  background: linear-gradient(270deg, rgba(30, 58, 58, 0.14), transparent 32%);
+}
+
+.agenda {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.agenda h3 {
+  margin: 0;
+}
+
+@media (max-width: 699px) {
+  .calendario-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .calendario-nav h2 {
+    order: -1;
+    flex: 1 0 100%;
+    font-size: 1.45rem;
+  }
+
+  .dia-hoy .dia-numero {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .dia,
+  .dia-vacio {
+    min-height: 3.4rem;
+    padding: 0.2rem;
+  }
+
+  .dia-etiqueta,
+  .dia-alias {
+    display: none;
+  }
+
+  .dia-marca {
+    display: inline;
+  }
+
+  .dia-cita {
+    justify-content: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    padding: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hoja-vuelta.adelante {
+    animation: voltear-adelante 680ms cubic-bezier(0.45, 0.05, 0.2, 1) forwards;
+  }
+
+  .hoja-vuelta.atras {
+    animation: voltear-atras 680ms cubic-bezier(0.45, 0.05, 0.2, 1) forwards;
+  }
+
+  .vista,
+  .etiqueta,
+  .paso,
+  .dia {
+    transition: background-color 160ms ease, border-color 160ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hoja-vuelta {
+    display: none;
+  }
+}
+
+@keyframes voltear-adelante {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes voltear-atras {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
 @keyframes entrar {
   from {
     opacity: 0;

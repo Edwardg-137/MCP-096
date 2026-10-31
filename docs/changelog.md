@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-10-31 — Calendario de expedientes
+
+Se añadió una vista del mes en curso. Cada expediente aparece con la etiqueta de su estado, en la fecha de ese estado. Se filtra por etiqueta y por fecha. Al cambiar de mes, la hoja se voltea.
+
+Documentos actualizados:
+
+- `bufete/src/domain/calendario.js`
+- `bufete/src/components/calendario/CalendarioExpedientes.jsx`
+- `bufete/src/pages/PaginaExpedientes.jsx`
+- `bufete/src/index.css`
+- `README.md`
+- `PRODUCT.md`
+- `docs/implementations/2026-10-calendario.md`
+- `docs/status/general.md`
+- `docs/status/structure.md`
+- `docs/status/architecture.md`
+- `docs/status/decisions.md`
+
+Impacto: el registro se puede consultar por mes sin cambiar las reglas de apertura, actividad, cierre ni reapertura.
+
 ## 2026-10-31 — Reapertura de expedientes
 
 Un expediente Cerrado puede pasar a En seguimiento con motivo. Se conservan las actividades y cada cierre anterior. La decisión y el resultado de la comprobación quedaron en `README.md`.

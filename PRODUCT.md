@@ -36,6 +36,7 @@ Confirmado en la ficha e implementado en `bufete`:
 - Los campos obligatorios vacíos o hechos solo de espacios se rechazan, indicando qué corregir.
 - Cada acción confirmada o rechazada con un mensaje comprensible.
 - Conservación en `localStorage`, según el README.
+- Calendario del mes en curso, con etiquetas por estado y filtro por etiqueta y fecha.
 
 Sin decidir: los nombres de las personas que cubren cada área. La ficha ya asigna las áreas.
 

@@ -59,3 +59,15 @@
 **Justificación.** Sustituir el cierre anterior borraría la trazabilidad. Una lista y un evento reutilizan el historial que ya existía.
 
 **Consecuencias.** La prohibición de cambiar el estado de un expediente cerrado queda limitada a esta acción. Mientras permanece cerrado, no admite actividades. Abierto y En seguimiento no pueden reabrirse.
+
+## 2026-10-31 — Calendario en la misma página
+
+**Contexto.** Hacía falta ver los expedientes en el mes real, con una etiqueta por estado, y filtrarlos por etiqueta y por fecha.
+
+**Problema.** El listado no muestra en qué día quedó cada estado. Una librería de calendarios añadiría una dependencia para una cuadrícula que el reloj del navegador ya puede armar.
+
+**Decisión.** Añadir una vista Calendario. El mes, los días y hoy salen de `Date`. Cada expediente se coloca en la fecha de su estado actual. Las tres etiquetas se activan o desactivan. El cambio de mes gira la hoja con CSS. Si el sistema pide menos movimiento, el mes cambia sin giro.
+
+**Justificación.** Reutiliza los expedientes guardados y la paleta ya usada. No cambia el recorrido de apertura, actividad, cierre ni reapertura.
+
+**Consecuencias.** El calendario no guarda datos. En una pantalla estrecha el día muestra la inicial de la etiqueta; el nombre completo queda en el botón y en la agenda.

@@ -21,7 +21,8 @@ MCP-096/
         ├── components/
         │   ├── layout/
         │   ├── expedientes/
-        │   └── actividades/
+        │   ├── actividades/
+        │   └── calendario/
         ├── pages/
         ├── domain/
         ├── services/
@@ -58,10 +59,12 @@ Código de la interfaz.
 | --- | --- | --- | --- |
 | `main.jsx` | Punto de entrada. Monta React en `#root`. | Monta `App`. | Importa `App` y `index.css`. |
 | `App.jsx` | Vista raíz. | Renderiza la página de expedientes. | Importa `pages/PaginaExpedientes.jsx`. |
-| `index.css` | Estilos de toda la pantalla. | Tokens de color, composición y la animación del historial. | Lo cargan los componentes por clases. |
+| `index.css` | Estilos de toda la pantalla. | Tokens de color, composición y las animaciones del historial y del calendario. | Lo cargan los componentes por clases. |
 | `components/layout/` | Avisos e iconos. | `Aviso.jsx`, `Icono.jsx`. | Los usan la página y el detalle. |
 | `components/expedientes/` | Alta, listado y detalle. | Formulario, lista, pastilla de estado y detalle. | Llaman a `domain` a través de la página. |
 | `components/actividades/` | Alta e historial. | Formulario de actividad e hilo cronológico. | El detalle los compone. |
+| `components/calendario/` | Vista mensual. | `CalendarioExpedientes.jsx`. | Lee la lista de la página y no escribe el almacenamiento. |
+| `domain/calendario.js` | Citas, rejilla y filtros del mes. | Funciones puras. | Usa `cierresDe` del expediente. |
 | `pages/PaginaExpedientes.jsx` | Pantalla del recorrido. | Filtros, selección y persistencia. | Une componentes, `domain` y `services`. |
 | `domain/expediente.js` | Reglas del expediente. | Alta, búsqueda, actividad y transiciones. | No depende de React. |
 | `services/expedientes.js` | Persistencia. | Lee y escribe `bufete.expedientes`. | Solo lo llama la página. |

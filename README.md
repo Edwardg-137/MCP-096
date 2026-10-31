@@ -63,6 +63,12 @@ Un campo obligatorio vacío, o formado solo por espacios, se rechaza. El mensaje
 
 La búsqueda compara identificador o alias. El filtro por estado es opcional.
 
+### Calendario
+
+La vista Calendario muestra el mes real, con la semana desde el lunes y el día de hoy marcado. Cada expediente aparece en la fecha del hecho que lo dejó en su estado actual: la apertura si está Abierto, el último paso a seguimiento o la última reapertura si está En seguimiento, y el último cierre si está Cerrado.
+
+Las etiquetas son Abierto, En seguimiento y Cerrado. Se pueden activar o desactivar. Una fecha, elegida en el control o en un día, deja solo ese día. Al cambiar de mes, la hoja se voltea. Elegir un expediente abre su detalle. El calendario no modifica los datos.
+
 ### Supuestos
 
 - Un navegador y una persona a la vez. No hay inicio de sesión ni varios perfiles.
