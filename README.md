@@ -1,6 +1,6 @@
 # Bufete
 
-Registro local de expedientes para un bufete jurídico. Los datos de la persona son ficticios. Esta ficha fija el problema, los datos y las reglas antes de implementar el recorrido.
+Registro local de expedientes para un bufete jurídico. Los datos de la persona son ficticios. Esta ficha fija el problema, los datos y las reglas del recorrido.
 
 ## Arranque
 
@@ -9,6 +9,8 @@ cd bufete
 npm install
 npm run dev
 ```
+
+Los expedientes se guardan en `localStorage` del mismo navegador, con la clave `bufete.expedientes`. Siguen disponibles al recargar o al volver a abrir la aplicación. Si el navegador no permite guardar, los cambios de esa visita permanecen en memoria y la pantalla lo indica.
 
 ## Problema, usuario y prioridades
 

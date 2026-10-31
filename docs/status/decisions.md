@@ -35,3 +35,15 @@
 **Justificación.** El README es el lugar que la propia conservación de datos deberá seguir. Mantener ahí la ficha evita una segunda especificación. Las responsabilidades se asignan por área de la aplicación porque el repositorio no tiene nombres de integrantes.
 
 **Consecuencias.** La implementación posterior debe seguir esa ficha. El README describe el comportamiento previsto; `docs/status/general.md` sigue distinguiendo lo que ya funciona de lo que está pendiente.
+
+## 2026-10-31 — Recorrido en una página, con reglas puras y localStorage
+
+**Contexto.** La propuesta `docs/implementations/2026-10-recorrido-expedientes.md` fue aceptada. Había que construir el recorrido sin añadir piezas que la ficha no pide.
+
+**Problema.** El registro necesita validar, conservar un historial y sobrevivir a la recarga sin un servidor.
+
+**Decisión.** Una sola página de React. Las reglas quedan en funciones puras. El historial es un solo arreglo. La persistencia es `localStorage` con la clave `bufete.expedientes`. No se agregaron dependencias. La interfaz usa la paleta pastel verde y azul, iconos propios y una animación CSS en la entrada nueva del historial.
+
+**Justificación.** Cada alternativa más grande —enrutador, almacén global, dos arreglos de historial, librería de iconos— cumplía lo mismo con más piezas.
+
+**Consecuencias.** Los datos viven en un navegador. La pantalla de Vite ya no forma parte del recorrido. Un cambio de forma del expediente debe empezar en `src/domain/expediente.js`.

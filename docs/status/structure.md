@@ -2,6 +2,8 @@
 
 ```
 MCP-096/
+├── README.md
+├── PRODUCT.md
 ├── docs/
 │   ├── general_instructions.md
 │   ├── changelog.md
@@ -15,9 +17,7 @@ MCP-096/
     └── src/
         ├── main.jsx
         ├── App.jsx
-        ├── App.css
         ├── index.css
-        ├── assets/
         ├── components/
         │   ├── layout/
         │   ├── expedientes/
@@ -29,6 +29,14 @@ MCP-096/
 ```
 
 `node_modules/` y `dist/` se generan al instalar y al compilar. No forman parte de la organización del código.
+
+## README.md
+
+Ficha funcional del recorrido: problema, datos, reglas y forma de integrar aportes. La aplicación la cumple.
+
+## PRODUCT.md
+
+Registro breve del producto usado al definir la interfaz. La dirección visual construida está en la aplicación y en la propuesta de implementación.
 
 ## docs
 
@@ -48,15 +56,14 @@ Código de la interfaz.
 
 | Ruta | Propósito | Contenido actual | Relación |
 | --- | --- | --- | --- |
-| `main.jsx` | Punto de entrada. Monta React en `#root`. | Implementado por la plantilla. | Importa `App`. |
-| `App.jsx` | Vista raíz. | Pantalla de demostración de Vite. | Usará las páginas cuando existan. |
-| `assets/` | Imágenes de la plantilla. | Logos e imagen de la plantilla. | Las usa `App.jsx`. |
-| `components/layout/` | Piezas compartidas de interfaz. | Carpeta vacía. | Las consumirán las páginas. |
-| `components/expedientes/` | Formularios y listados del expediente. | Carpeta vacía. | Dependerá de `domain` y `services`. |
-| `components/actividades/` | Alta e historial de actividades. | Carpeta vacía. | Dependerá de `domain` y `services`. |
-| `pages/` | Pantallas del recorrido. | Carpeta vacía. | Compondrán los componentes. |
-| `domain/` | Reglas del expediente, estados y validación. | Carpeta vacía. | No debe depender de React. |
-| `services/` | Persistencia en el navegador. | Carpeta vacía. | Usará `domain` y será llamada por la interfaz. |
-| `utils/` | Helpers sin reglas de negocio, como el formato de fecha y hora. | Carpeta vacía. | Las pueden usar `domain` y la interfaz. |
-
-Las carpetas vacías reservan el lugar de cada responsabilidad. No contienen módulos ni exportan nada.
+| `main.jsx` | Punto de entrada. Monta React en `#root`. | Monta `App`. | Importa `App` y `index.css`. |
+| `App.jsx` | Vista raíz. | Renderiza la página de expedientes. | Importa `pages/PaginaExpedientes.jsx`. |
+| `index.css` | Estilos de toda la pantalla. | Tokens de color, composición y la animación del historial. | Lo cargan los componentes por clases. |
+| `components/layout/` | Avisos e iconos. | `Aviso.jsx`, `Icono.jsx`. | Los usan la página y el detalle. |
+| `components/expedientes/` | Alta, listado y detalle. | Formulario, lista, pastilla de estado y detalle. | Llaman a `domain` a través de la página. |
+| `components/actividades/` | Alta e historial. | Formulario de actividad e hilo cronológico. | El detalle los compone. |
+| `pages/PaginaExpedientes.jsx` | Pantalla del recorrido. | Filtros, selección y persistencia. | Une componentes, `domain` y `services`. |
+| `domain/expediente.js` | Reglas del expediente. | Alta, búsqueda, actividad y transiciones. | No depende de React. |
+| `services/expedientes.js` | Persistencia. | Lee y escribe `bufete.expedientes`. | Solo lo llama la página. |
+| `utils/texto.js` | Texto vacío y recorte. | Dos funciones. | Las usa `domain`. |
+| `utils/fecha.js` | Fecha ISO y formato local. | `ahoraIso` y `formatearFecha`. | Las usan `domain` y el detalle. |
