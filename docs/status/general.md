@@ -6,7 +6,7 @@ Aplicación web para un bufete jurídico. Permite abrir expedientes con datos fi
 
 ## Funcionamiento actual
 
-Al arrancar `bufete` se abre el registro de expedientes. La persona puede crear un expediente, buscarlo, ver su detalle y su historial, anotar actividades y cambiar el estado hasta cerrarlo.
+Al arrancar `bufete` se abre el registro de expedientes. La persona puede crear un expediente, buscarlo, anotar actividades, cerrarlo y reabrirlo cuando llega información nueva.
 
 Los datos quedan en `localStorage` del mismo navegador, con la clave `bufete.expedientes`. Siguen disponibles al recargar o al volver a abrir la aplicación.
 
@@ -22,7 +22,8 @@ Los datos quedan en `localStorage` del mismo navegador, con la clave `bufete.exp
 - Búsqueda por identificador o alias, y filtro opcional por estado. Aviso cuando no hay resultados.
 - Actividad con descripción obligatoria, fecha automática y tipo opcional.
 - Paso de Abierto a En seguimiento, y cierre desde En seguimiento si hay al menos una actividad y un motivo.
-- El expediente cerrado se consulta y no admite actividades ni cambios de estado.
+- Reapertura de Cerrado a En seguimiento con motivo. Se conservan actividades y cierres anteriores.
+- El expediente cerrado no admite nuevas actividades.
 - Confirmaciones y errores del recorrido.
 - Conservación en el navegador.
 

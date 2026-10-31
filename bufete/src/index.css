@@ -392,12 +392,33 @@ input::placeholder {
 }
 
 .nota-cerrado {
-  display: grid;
-  gap: 0.25rem;
+  margin: 0;
   padding: 0.8rem 0.9rem;
   border-radius: 8px;
   background: var(--cerrado-fondo);
   color: var(--cerrado-tinta);
+}
+
+.bloque-cierres {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.bloque-cierres h3 {
+  margin: 0;
+}
+
+.cierres {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cierres li {
+  display: grid;
+  overflow-wrap: break-word;
 }
 
 .error-campo {

@@ -16,7 +16,7 @@ Registro recuperable de asuntos ficticios: quién los pidió, de qué tratan, qu
 
 ## Positioning
 
-El historial conserva, en una sola secuencia, la apertura, cada actividad y cada cambio de estado. Un expediente cerrado sigue visible y deja de aceptar cambios.
+El historial conserva, en una sola secuencia, la apertura, cada actividad y cada cambio de estado. Un expediente cerrado sigue visible. No admite actividades hasta que se reabra con motivo.
 
 ## Operating Context
 
@@ -30,8 +30,8 @@ Confirmado en la ficha e implementado en `bufete`:
 - Identificador, fecha y hora de apertura y estado inicial Abierto generados por la aplicación.
 - Listado con identificador, persona, responsable y estado. Detalle e historial. Búsqueda por identificador o alias. Filtro por estado opcional. Aviso cuando no hay resultados.
 - Actividad con descripción obligatoria y fecha automática. Tipo de actividad opcional. Sin archivos adjuntos.
-- Transiciones únicas: Abierto a En seguimiento por acción explícita; En seguimiento a Cerrado si hay al menos una actividad y un motivo no vacío.
-- El expediente cerrado se consulta y no admite actividades ni cambios de estado.
+- Transiciones: Abierto a En seguimiento por acción explícita; En seguimiento a Cerrado si hay al menos una actividad y un motivo no vacío; Cerrado a En seguimiento con motivo de reapertura.
+- El expediente cerrado se consulta y no admite actividades. Cada cierre se conserva. Un cierre nuevo no sustituye al anterior.
 - No se editan ni se eliminan expedientes o actividades.
 - Los campos obligatorios vacíos o hechos solo de espacios se rechazan, indicando qué corregir.
 - Cada acción confirmada o rechazada con un mensaje comprensible.
@@ -53,7 +53,7 @@ La ficha de `README.md` es la referencia funcional. No hay expedientes reales, c
 
 - Los datos de la persona son ficticios.
 - Cada regla de validación y de estado tiene un solo lugar.
-- Un expediente cerrado se puede leer y no se puede alterar.
+- Un expediente cerrado se puede leer. Mientras permanece cerrado no admite actividades. Puede reabrirse con motivo.
 - Toda acción confirma el resultado o nombra lo que hay que corregir.
 - Entre dos opciones que cumplen la regla, se usa la más simple.
 

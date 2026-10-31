@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-10-31 — Reapertura de expedientes
+
+Un expediente Cerrado puede pasar a En seguimiento con motivo. Se conservan las actividades y cada cierre anterior. La decisión y el resultado de la comprobación quedaron en `README.md`.
+
+Documentos actualizados:
+
+- `bufete/src/domain/expediente.js`
+- `bufete/src/pages/PaginaExpedientes.jsx`
+- `bufete/src/components/expedientes/DetalleExpediente.jsx`
+- `README.md`
+- `PRODUCT.md`
+- `docs/status/general.md`
+- `docs/status/architecture.md`
+- `docs/status/decisions.md`
+
+Impacto: el cierre deja de ser terminal. Las demás reglas del recorrido siguen vigentes.
+
 ## 2026-10-31 — Recorrido de expedientes
 
 Se implementó la apertura, la consulta, las actividades, los cambios de estado y la conservación en `localStorage`. La pantalla de la plantilla de Vite quedó reemplazada por el registro del bufete.

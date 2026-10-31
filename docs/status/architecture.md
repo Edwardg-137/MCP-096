@@ -31,7 +31,7 @@ Servicio interno de lectura y escritura en `localStorage`. No hay servicios exte
 
 ## Almacenamiento
 
-`localStorage`, una clave, un arreglo JSON. Cada expediente guarda identificador, fechas en ISO, estado, alias, descripción, responsable, categoría, motivo de cierre e historial. La hora visible se formatea en `es-MX` al mostrarla.
+`localStorage`, una clave, un arreglo JSON. Cada expediente guarda identificador, fechas en ISO, estado, alias, descripción, responsable, categoría, la lista de cierres y el historial. La hora visible se formatea en `es-MX` al mostrarla. Un cierre nuevo se agrega a la lista. La reapertura no la borra.
 
 Si la lectura o la escritura fallan, la página lo explica. Una lectura fallida no se sobrescribe con una lista vacía.
 

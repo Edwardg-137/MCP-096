@@ -12,6 +12,7 @@ import {
   crearExpediente,
   ordenarExpedientes,
   pasarASeguimiento,
+  reabrirExpediente,
 } from '../domain/expediente.js'
 import { guardarExpedientes, leerExpedientes } from '../services/expedientes.js'
 import { recortar } from '../utils/texto.js'
@@ -176,6 +177,9 @@ export function PaginaExpedientes() {
                     }
                     onCerrar={(motivo) =>
                       aplicar(cerrarExpediente(seleccionado, motivo), 'Expediente cerrado.')
+                    }
+                    onReabrir={(motivo) =>
+                      aplicar(reabrirExpediente(seleccionado, motivo), 'Expediente reabierto.')
                     }
                   />
                 ) : (

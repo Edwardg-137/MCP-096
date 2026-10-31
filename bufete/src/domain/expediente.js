@@ -4,8 +4,8 @@ import { enBlanco, recortar } from '../utils/texto.js'
 export const ESTADOS = ['Abierto', 'En seguimiento', 'Cerrado']
 export const CATEGORIAS = ['Civil', 'Familiar', 'Laboral']
 
-const MENSAJE_CERRADO =
-  'Este expediente está cerrado. Ya no admite actividades ni cambios de estado.'
+const MENSAJE_SIN_ACTIVIDAD =
+  'Este expediente está cerrado. No admite nuevas actividades.'
 
 function crearId(prefijo) {
   const aleatorio = Math.random().toString(36).slice(2, 6)
@@ -49,14 +49,23 @@ export function crearExpediente(datos = {}, ahora = ahoraIso()) {
       categoria,
       cerradoEn: null,
       motivoCierre: '',
+      cierres: [],
       historial: [entrada('apertura', 'Expediente abierto.', ahora)],
     },
   }
 }
 
+export function cierresDe(expediente) {
+  if (Array.isArray(expediente.cierres)) return expediente.cierres
+  if (expediente.cerradoEn && !enBlanco(expediente.motivoCierre)) {
+    return [{ en: expediente.cerradoEn, motivo: recortar(expediente.motivoCierre) }]
+  }
+  return []
+}
+
 export function agregarActividad(expediente, datos = {}, ahora = ahoraIso()) {
   if (expediente.estado === 'Cerrado') {
-    return { ok: false, errores: { general: MENSAJE_CERRADO } }
+    return { ok: false, errores: { general: MENSAJE_SIN_ACTIVIDAD } }
   }
   if (enBlanco(datos.descripcion)) {
     return {
@@ -80,9 +89,6 @@ export function agregarActividad(expediente, datos = {}, ahora = ahoraIso()) {
 }
 
 export function pasarASeguimiento(expediente, ahora = ahoraIso()) {
-  if (expediente.estado === 'Cerrado') {
-    return { ok: false, errores: { general: MENSAJE_CERRADO } }
-  }
   if (expediente.estado !== 'Abierto') {
     return {
       ok: false,
@@ -105,7 +111,7 @@ export function pasarASeguimiento(expediente, ahora = ahoraIso()) {
 
 export function cerrarExpediente(expediente, motivo, ahora = ahoraIso()) {
   if (expediente.estado === 'Cerrado') {
-    return { ok: false, errores: { general: MENSAJE_CERRADO } }
+    return { ok: false, errores: { general: 'Este expediente ya está cerrado.' } }
   }
   if (expediente.estado !== 'En seguimiento') {
     return {
@@ -132,9 +138,38 @@ export function cerrarExpediente(expediente, motivo, ahora = ahoraIso()) {
       estado: 'Cerrado',
       cerradoEn: ahora,
       motivoCierre: motivoLimpio,
+      cierres: [...cierresDe(expediente), { en: ahora, motivo: motivoLimpio }],
       historial: [
         ...expediente.historial,
-        entrada('estado', `Cerrado. Motivo: ${motivoLimpio}`, ahora),
+        entrada('estado', `Cerrado. Motivo: ${motivoLimpio}`, ahora, { motivo: motivoLimpio }),
+      ],
+    },
+  }
+}
+
+export function reabrirExpediente(expediente, motivo, ahora = ahoraIso()) {
+  if (expediente.estado !== 'Cerrado') {
+    return { ok: false, errores: { general: 'Solo se puede reabrir un expediente cerrado.' } }
+  }
+  if (enBlanco(motivo)) {
+    return { ok: false, errores: { motivo: 'Escribe el motivo de reapertura.' } }
+  }
+
+  const motivoLimpio = recortar(motivo)
+  return {
+    ok: true,
+    expediente: {
+      ...expediente,
+      estado: 'En seguimiento',
+      cierres: cierresDe(expediente),
+      historial: [
+        ...expediente.historial,
+        entrada(
+          'estado',
+          `Reabierto. Pasó de Cerrado a En seguimiento. Motivo: ${motivoLimpio}`,
+          ahora,
+          { motivo: motivoLimpio },
+        ),
       ],
     },
   }

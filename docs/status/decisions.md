@@ -47,3 +47,15 @@
 **Justificación.** Cada alternativa más grande —enrutador, almacén global, dos arreglos de historial, librería de iconos— cumplía lo mismo con más piezas.
 
 **Consecuencias.** Los datos viven en un navegador. La pantalla de Vite ya no forma parte del recorrido. Un cambio de forma del expediente debe empezar en `src/domain/expediente.js`.
+
+## 2026-10-31 — Reapertura con lista de cierres
+
+**Contexto.** La coordinación necesita retomar el seguimiento cuando llega información después del cierre. La evidencia pedida está en `README.md`, entrada 3 de Decisiones.
+
+**Problema.** Un expediente cerrado debía permanecer consultable y, a la vez, poder volver a En seguimiento sin perder actividades ni el cierre anterior.
+
+**Decisión.** Agregar la acción Reabrir expediente. El motivo es obligatorio. Cada cierre se agrega a una lista. El historial recibe la transición, la fecha, la hora y el motivo.
+
+**Justificación.** Sustituir el cierre anterior borraría la trazabilidad. Una lista y un evento reutilizan el historial que ya existía.
+
+**Consecuencias.** La prohibición de cambiar el estado de un expediente cerrado queda limitada a esta acción. Mientras permanece cerrado, no admite actividades. Abierto y En seguimiento no pueden reabrirse.

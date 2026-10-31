@@ -2,7 +2,7 @@
 
 Fecha: 2026-10-31
 
-Estado: implementada el 2026-10-31.
+Estado: implementada el 2026-10-31. La reapertura posterior permite volver de Cerrado a En seguimiento. El detalle está en `README.md`, decisión 3. En esta propuesta, la prohibición total de cambiar el estado de un expediente cerrado quedó superada.
 
 ## Objetivo
 
